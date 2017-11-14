@@ -24,27 +24,33 @@ class Customer
         cName = N;
         cAge = a;
         cGender = 'M';
-        cBal = 50265;
+        cBal = 20161;
     }
 
     public void read() throws IOException
     {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-        // Scanner scan = new Scanner(System.in);
+        // InputStreamReader isr = new InputStreamReader(System.in);
+        // BufferedReader br = new BufferedReader(isr);
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter the Customer Name");
-        cName=br.readLine();
+        // cName=br.readLine();
+        cName = scan.next();
         System.out.println("Enter Customer age");
-        cAge=Byte.parseByte(br.readLine());
+        // cAge=Byte.parseByte(br.readLine());
+        cAge = scan.nextByte();
         System.out.println("Enter the Customer Account Number");
-        cAccNo=Long.parseLong(br.readLine());
+        // cAccNo=Long.parseLong(br.readLine());
+        cAccNo = scan.nextLong();
         System.out.println("Enter the Minimum Balance");
-        cMiniBal=Short.parseShort(br.readLine());
+        // cMiniBal=Short.parseShort(br.readLine());
+        cMiniBal = scan.nextShort();
         System.out.println("Enter Balance Amount");
-        cBal=Float.parseFloat(br.readLine());
+        // cBal=Float.parseFloat(br.readLine());
+        cBal = scan.nextFloat();
         System.out.println("Enter Customer gender");
-        cGender=(char)br.read();
+        // cGender=(char)br.read();
+        cGender = scan.next().charAt(0);
     }
 
     public void disp()
@@ -57,17 +63,18 @@ class Customer
     }
 }
 
-public class Constructor
+public class Scannerrr
 {
     public static void main(String arg[]) throws IOException
     {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-
+        // InputStreamReader isr = new InputStreamReader(System.in);
+        // BufferedReader br = new BufferedReader(isr);
+        Scanner scan = new Scanner(System.in);
         int ch=0;
         do{   
             System.out.println("Please Choose from the following:\n1.OBJ1\n2.OBJ2\n3.OBJ3\n4.Exit\nChoice:\t");
-            ch = Integer.parseInt(br.readLine());
+            // ch = Integer.parseInt(br.readLine());
+            ch = scan.nextInt();
             if(ch==1)
             {
                 Customer obj = new Customer();
@@ -75,7 +82,7 @@ public class Constructor
             }
             else if(ch==2)
             {
-                Customer obj2 = new Customer("AKKI",(byte)10);
+                Customer obj2 = new Customer("AKKI",(byte)25);
                 obj2.disp();
             }
             else if(ch==3)
