@@ -1,7 +1,10 @@
-/* Inheritence Program:
-1. Implementation of single level inheritance with proper class names satisfying IS A relationship    1 marks
-2. Implementation of multilevel inheritance with proper class names satisfying IS A relationship                 1 marks
-3. Passing parameters to the parent class constructors       1 mark for single inheritance and 1 mark for multi level inherirance
+/*
+ Implementation of super and this 
+1. use of this keyword to initialize data members    - 1 mark
+2. use of this keyword in constructor chaining          - 1 mark
+3. use of super keyword to call parent class methods  - 1 marks
+4. Use of super keyword to pass parameters to parent class constructor  - 1 mark"
+
 */
 import java.io.*;                  //Basic IO Class
 import java.sql.Time;              //Class for Time
@@ -14,18 +17,21 @@ class SCHOOL
     private String schName;
     private String schCity;
     private String schHead;
-    //Defalut Constructor
+    SCHOOL(int schNo,String schName,String schHead)
+    {
+        this.schNo = schNo;
+        this.schName = schName;
+        this.schHead = schHead;                    
+    }
+    SCHOOL(int schNo,String schName,String schHead,String schCity)
+    {
+        //Constructor Chaining
+        this(schNo,schName,schHead);
+        this.schCity = schCity;
+    }
     SCHOOL()
     {
         schNo = 0;
-    }
-    //Patrameterised Constructor
-    SCHOOL(int no,String name,String head)
-    {
-        schNo = no;
-        schName = name;
-        schCity = "Delhi";
-        schHead = head;
     }
     public void schDisplay()
     {
@@ -46,10 +52,14 @@ class CLASS extends SCHOOL
     private String cName;
     private String cSection;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    CLASS(String cLocation)
+    {
+        this.cLocation = cLocation;
+    }
     CLASS()
     {
         //Passing parameter to parent class constructor 
-        super(17822,"Mordern Public School","Mr. Augusti");
+        super(17822,"Mordern Public School","Mr. Augusti","Delhi");
     }
     public void cRead() throws IOException
     {
@@ -60,7 +70,7 @@ class CLASS extends SCHOOL
         System.out.print("Enter Section of the class:\t");
         cSection = br.readLine();    
     }
-    public void cDisp()
+    public void schDisp()
     {
         super.schDisplay();
         System.out.println("\n\t\t*CLASS INFORMATION*\n");
@@ -86,9 +96,9 @@ class STUDENT extends CLASS
         System.out.print("Enter Student's Age:\t\t");        
         sAge = Short.parseShort(super.br.readLine());
     }
-    public void sDip()
+    public void schDisp()
     {
-        cDisp();
+        super.schDisp();
         System.out.println("\n\t\t*PERSONAL INFORMATION*\n");
         System.out.println("Student's Roll No is.:\t\t" + sRollNo);
         System.out.println("Student's Name is:\t\t" + sName);        
@@ -124,9 +134,10 @@ class RESULT extends STUDENT
         }
     }
     
+    
 	public void rDisp()
 	{
-        super.sDip();
+        super.schDisp();
         System.out.println("\t\t*MARKS*\n");
         int i;	
         for(i=0; i<5; i++)
@@ -138,15 +149,15 @@ class RESULT extends STUDENT
 	public void pof()
 	{
         float ress = (res/5);
-            System.out.println("Percentage :\t\t\t" + ress + "%");
-		if (ress>35)
-			System.out.println("Result :\t\t\tPASS\n");
-		else
-			System.out.println("Result :\t\t\tFAIL\n");
+        System.out.println("Percentage :\t\t\t" + ress + "%");
+    if (ress>35)
+        System.out.println("Result :\t\t\tPASS\n");
+    else
+        System.out.println("Result :\t\t\tFAIL\n");
     }
 }
 
-public class REPORTCARD
+public class REPORT
 {
     public static void main(String[] args) throws IOException
     {
@@ -158,7 +169,7 @@ public class REPORTCARD
         obj.rRead();
         do
         {
-            System.out.print("\n\nChoose from the following:\n\t1. Display Result\n\t2. Status and Percentage\n\t3. Enter Values again or Exit\n\nChoice:\t\t");
+            System.out.print("\nChoose from the following:\n\t1. Display Result\n\t2. Status and Percentage\n\t3. Enter Values again or Exit\n\nChoice:\t\t");
             ch =  Byte.parseByte(br.readLine());
             System.out.print("\n");
             if(ch==1)
@@ -179,7 +190,7 @@ public class REPORTCARD
                 System.out.println("\n\n\t\t**Not a valid option, please try again!**\n\n");
             }
        }while(ch!=3);
-       System.out.print("\nPress 1 if you want to exit, otherwise enter any number to enter new values.\n");
+       System.out.print("\nPress 1 if you want to exit, otherwise enter any number to enter new values:\t");
        choice =  Byte.parseByte(br.readLine());
       }while (choice!=1);
     }
