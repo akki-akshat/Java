@@ -112,12 +112,13 @@ class RESULT extends STUDENT
 {
     private String[] sub= {"English","Hindi  ","Maths  ","Science","EVS   "};
     private float[] rMarks = new float[5];
-    private float res;
+    private float res = 0;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public void rRead() throws IOException
 	{
         super.sRead(); 
-		int i;	
+        int i;
+        res = 0;	
 		for(i=0; i<5; i++)
 		{
             System.out.print("Marks in " + sub[i] + ":\t\t");

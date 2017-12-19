@@ -8,10 +8,15 @@ import java.io.*;
         super(s);
     }
 }*/
-class ExceptionTest 
+class MyException extends Exception{  
+	MyException(String s){  
+	 super(s);  
+	}  
+   }
+class ExceptionTest1
 {
 
-   public static void main(String args[]) 
+   public static void main(String args[]) throws MyException
    {  BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
       int a[] = new int[2];
@@ -19,18 +24,15 @@ class ExceptionTest
        int b,c,d; 
 	   try
 	   {
-	        b=Integer.parseInt(br.readLine());
-	       c=Integer.parseInt(br.readLine());
-	    //   if(c==0)
-		//   {
-		// 	  throw new MyException("division by zero");
-        	
-        //   }
-          
-	 	  d=b/c;
-
-          System.out.println("Access element three :" + a[33]);
-	 	 System.out.println(str.length());
+	      b=Integer.parseInt(br.readLine());
+	      c=Integer.parseInt(br.readLine());
+		  d=b/c;
+		  if(c==0)
+		  {
+		    throw new MyException("division by zero");
+		  }
+        System.out.println("Access element three :" + a[1]);
+	 	System.out.println(str.length());
        } 
 	   catch (ArrayIndexOutOfBoundsException e)
 	   {
@@ -51,15 +53,14 @@ class ExceptionTest
 	 	 System.out.println("Exception thrown  IOException: " + e);
    
 	   }
-	   catch(ArithmeticException e)
-	   {
-	 	  System.out.println("Exception thrown  ArithmeticException : " + e);
+	//    catch(ArithmeticException e)
+	//    {
+	//  	  System.out.println("Exception thrown  ArithmeticException : " + e);
    
-	   }
+	//    }
 	   finally
 	   {
-	 	System.out.println("In the final block");
-     
+	 	System.out.println("In the final block"); 
 	   }
 	  /*catch(MyException e)
 	  {
