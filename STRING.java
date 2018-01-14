@@ -8,9 +8,9 @@ import java.lang.String;
 class STR
 {
    void disp()
-   {
+    {
         System.out.println("\n\n\tPlease Choose an option from below to perform Calculations:\n");
-        System.out.println("0.  Enter new string ");
+        System.out.println("0.  Enter new string");
         System.out.println("1.  Check if the string is Empty");         //isEmpty
         System.out.println("2.  Know the length of string");            //length
         System.out.println("3.  Trim the string");                      //trim
@@ -23,8 +23,7 @@ class STR
         System.out.println("10. Concat with another string");           //concat
         System.out.println("11. Display Strings");
         System.out.print("12. Exit\n\tChoice:\t\t");
-   } 
-
+    }
 }
 
 class STRING
