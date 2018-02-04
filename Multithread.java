@@ -73,11 +73,19 @@ import java.io.*;
 
 class Odd extends Thread
 {
-    public void run()
+    public void run() 
     {
-        for(int i=1;i<20;i+=2)
+        try
         {
-            System.out.println("ODD NUMBER:\t"+i);
+            for(int i=1;i<20;i+=2)
+            {
+                System.out.println("ODD NUMBER:\t"+i);
+                Thread.sleep(500);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error");
         }
     }
 }
@@ -95,7 +103,7 @@ class Even extends Thread
         }
         catch(Exception e)
         {
-            System.out.println("Eror");
+            System.out.println("Error");
         }
     }
 }
